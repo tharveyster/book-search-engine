@@ -22,15 +22,7 @@ const SavedBooks = () => {
 
     try {
       await deleteBook({
-        variables: {bookId: bookId},
-        update: cache => {
-          const data = cache.readQuery({ query: GET_ME });
-          const userDataCache = data.me;
-          const savedBooksCache = userDataCache.savedBooks;
-          const updatedBookCache = savedBooksCache.filter((book) => book.bookId !== bookId);
-          data.me.savedBooks = updatedBookCache;
-          cache.writeQuery({ query: GET_ME, data: { data: { ...data.me.savedBooks } } });
-        }
+        variables: { bookId },
       });
 
       removeBookId(bookId);
@@ -64,8 +56,8 @@ const SavedBooks = () => {
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
                   <p className='small'>Authors: {book.authors}</p>
-                  {book.link ? <Card.Text><a href={book.link} rel="noopener noreferrer" target="_blank">See the book on Google Books</a></Card.Text> : null}
                   <Card.Text>{book.description}</Card.Text>
+                  {book.link ? <Card.Text><a href={book.link} rel="noopener noreferrer" target="_blank">See the book on Google Books</a></Card.Text> : null}
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
                     Delete this Book!
                   </Button>
