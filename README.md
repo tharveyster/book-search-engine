@@ -5,9 +5,6 @@ For this project I was provided a fully functional RESTful API, and had to refac
 
 The app allows users to search for books by keyword. Registered users can also save books to their accounts, or delete saved books from their accounts.
 
-## Project Link
-The app can be viewed at <https://nameless-river-09921.herokuapp.com/>.
-
 ## Screenshot
 ![Book Search Engine allows users to view and save book information.](./assets/images/book-search-engine.png)
 
